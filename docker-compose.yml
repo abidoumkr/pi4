@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  rpi-netboot:
+    build: .
+    privileged: true
+    network_mode: host
+    volumes:
+      - ./data/nfs:/data/nfs
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+    restart: unless-stopped
